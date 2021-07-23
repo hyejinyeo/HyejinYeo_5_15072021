@@ -1,4 +1,4 @@
-/* Color: Light purple - #F3E9F2, Dark purple - #905BF9, Medium purple - B57096, Text - #24111F */
+/* Color: Light purple - #F3E9F2, Medium purple - B57096, Dark purple - #905BF9, Text - #24111F */
 
 /* Global */
 a {
@@ -35,9 +35,9 @@ nav > ul > li {
       padding-right: 10px;
     }
   }
-  nav > ul > li > a {
+nav > ul > li > a {
     font-size: 1.1em;
-  }
+}
   @media screen and (min-width: 320px) and (max-width: 767px) {
     nav > ul > li > a {
       font-size: 1em;
@@ -48,61 +48,16 @@ nav > ul > li {
       font-size: 0.8em;
     }
   }
-  
-  .nav-display {
+.nav-display {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .fa-shopping-bag {
-    font-size: 1.5em;
-  }
+}
+.fa-shopping-bag {
+  font-size: 1.5em;
+}
 
 /* Main - index.html */
-#products {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.products__item {
-  width: 32%;
-  height: 470px;
-}
-
-.products__item > a > img {
-  width: 100%;
-  height: 100%;
-}
-
-.card-body {
-  position: relative;
-}
-
-.card-body > h3 {
-  font-size: 1.4em;
-}
-
-.card-body > h4 {
-  font-size: 1.3em;
-  position: absolute;
-  right: 20px;
-  top: 18px;
-}
-
-.card-body > p
-
-
-  /*Consider: 
-  - Sticky nav
-  - Replacement of 'Panier' into an icon
-  - Delete of 'Accueil' as logo does the same job
-  */
-
-
-  
   /*Section 1: Presentation*/
   .jumbotron {
     position: relative;
@@ -125,16 +80,16 @@ nav > ul > li {
     color: #F3E9F2;
     font-size: 6.6em;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    .jumbotron > .jmb-text h1 {
-      font-size: 3em;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      .jumbotron > .jmb-text h1 {
+        font-size: 3em;
+      }
     }
-  }
-  @media (max-width: 320px) {
-    .jumbotron > .jmb-text h1 {
-      font-size: 2.5em;
+    @media (max-width: 320px) {
+      .jumbotron > .jmb-text h1 {
+        font-size: 2.5em;
+      }
     }
-  }
   .jumbotron > .jmb-text h1 span {
     color: #905BF9;
   }
@@ -142,20 +97,48 @@ nav > ul > li {
     color: #F3E9F2;
     font-size: 1.5em;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    .jumbotron > .jmb-text h2 {
-      font-size: 1.2em;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      .jumbotron > .jmb-text h2 {
+        font-size: 1.2em;
+      }
     }
-  }
-  @media (max-width: 320px) {
-    .jumbotron > .jmb-text h2 {
-      font-size: 1.1em;
+    @media (max-width: 320px) {
+      .jumbotron > .jmb-text h2 {
+        font-size: 1.1em;
+      }
     }
-  }
   
   /*Section 2: Products*/
   #products {
     padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .products__item {
+    width: 32%;
+    height: 470px;
+  }
+  .products__item > a > img {
+    width: 100%;
+    height: 100%;
+  }
+  .card-body {
+    position: relative;
+  }
+  .card-body > h3 {
+    font-size: 1.4em;
+  }
+  .card-body > h4 {
+    font-size: 1.3em;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
+  .card-body > p {
+    font-size: 1em;
+    text-align: justify;
   }
 
   .btn-primary {
@@ -167,10 +150,10 @@ nav > ul > li {
     background-color: #905BF9;
     border: none;
   }
-
-
-
-
+      
+/* Main - produit.html */
+/* Main - panier.html */
+/* Main - confirmation.html */
 
 /* Footer */
 footer {

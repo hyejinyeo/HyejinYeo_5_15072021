@@ -36,16 +36,13 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <nav class="navbar navbar-expand bg-transparent navbar-light py-0 nav-display">
+                <nav class="navbar bg-transparent navbar-light p-0 nav-display">
                     <!-- Logo -->
                     <a class="navbar-brand py-0" href="index.html">
                         <img src="images/Logo_Orinoco.webp" alt="Logo Orinoco">
                     </a>
                     <!-- Nav -->
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link" href="index.html">ACCUEIL</a>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="pages/panier.html">
                                 <i class="fas fa-shopping-bag"></i>
@@ -58,8 +55,8 @@
         
     </header>
     <main>
+        <!-- Section 1: Presentation -->
         <div class="container-fluid px-0 mb-2">
-            <!-- Section 1: Presentation -->
             <section id="presentation">
                 <div class="row m-0">
                     <div class="col p-0">
@@ -73,21 +70,30 @@
                     </div>
                 </div>
             </section>
-            <!-- Section 2: Products -->
+        </div>
+        <!-- Section 2: Products -->
+        <div class="container-fluid mt-3">
             <section id="products">
-                <!-- <template id="templateArticle"> -->
-                    <div class="card p-2 mb-3 products__item">
-                        <a href="pages/produit.html">
-                            <img id="card__image" class="card-img-top" src="images/Logo_Orinoco.webp" alt="">
-                            <div class="card-body">                        
-                                <h3 id="card__name">Norbert</h3>
-                                <h4 id="card__price">34.44€</h4>
-                            </div>
-                        </a>
-                    </div>
-                <!-- </template> -->
-                <!--un bloc invisible-->
-                <i aria-hidden="true" class="products__item"></i>
+                <h3>NOS OURSONS</h3>
+                <div id="cards" class="pt-2">
+                    <template id="templateProducts">
+                        <div class="card shadow p-0 mb-3" id="products__card">
+                            <a href="" id="card__link">
+                                <div class="card-image">
+                                    <img id="card__image" class="card-img-top card__image" src="" alt="">
+                                </div>
+                                <div class="card-body">                        
+                                    <h3 id="card__name" class="card__name m-0"></h3>
+                                    <h4 id="card__price" class="card__price m-0"></h4>
+                                </div>
+                            </a>
+                        </div>
+                    </template>
+                    <!-- <div class="bloc--invisible">
+                        <i aria-hidden="true" class="products__card"></i>
+                    </div> -->
+                </div>
+
             </section>
         </div>
     </main>

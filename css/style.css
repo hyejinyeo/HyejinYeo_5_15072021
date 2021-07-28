@@ -1,186 +1,236 @@
 /* Color: Light purple - #F3E9F2, Medium purple - B57096, Dark purple - #905BF9, Text - #24111F */
+
 /* Global */
 body {
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: #24111F;
 }
 a {
     color: #24111F;
     text-decoration: none;
-} 
+}
 a:hover {
     color: #24111F;
 }
 a:visited {
     color: #24111F;
-} 
+}
 li {
     list-style: none;
 }
-/* Header */
-header {
-    background-color: #F3E9F2;
-}
-nav img {
-    width: 70%;
-    height: auto;
-}
-nav > ul > li {
-    padding-right: 20px;
-}
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    nav > ul > li {
-      padding-right: 10px;
-    }
-  }
-  @media (max-width: 320px) {
-    nav > ul > li {
-      padding-right: 10px;
-    }
-  }
-nav > ul > li > a {
-    font-size: 1.1em;
-}
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    nav > ul > li > a {
-      font-size: 1em;
-    }
-  }
-  @media (max-width: 320px) {
-    nav > ul > li > a {
-      font-size: 0.8em;
-    }
-  }
-.nav-display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.fa-shopping-bag {
-  font-size: 1.5em;
-}
 
-/* Main - index.html */
-  /*Section 1: Presentation*/
-  .jumbotron {
-    position: relative;
-  }
-  .jumbotron img {
-    width: 100%;
-    height: 100%;
-  }
-  .jumbotron > .jmb-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    opacity: 0.8;
-    text-align: center;
-    text-shadow: 1px 1px 2px #24111F;
-  }
-  .jumbotron > .jmb-text h1 {
-    color: #F3E9F2;
-    font-size: 6.5em;
-    font-weight: 600;
-  }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-      .jumbotron > .jmb-text h1 {
-        font-size: 3em;
-      }
-    }
+/* Mobile First */
+    /* Header */
+        header {
+            background-color: #F3E9F2;
+        }
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav > a {
+            width: 200px;
+        }
+        nav img {
+            width: 90%;
+            height: auto;
+        }
+        .fa-shopping-bag {
+            font-size: 1.7em;
+            padding-right: 20px;
+        }
+        
+    /* Main */
+        /* index.html */
+            /* Section 1: Presentation */
+                .jumbotron {
+                    position: relative;
+                }
+                .jumbotron img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .jumbotron > .jmb-text {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    opacity: 0.8;
+                    text-align: center;
+                    text-shadow: 1px 1px 2px #24111F;
+                }
+                .jmb-text h1 {
+                    color: #F3E9F2;
+                    font-size: 2.7em;
+                    font-weight: 600;
+                }
+                .jmb-text h1 span {
+                    color: #905BF9;
+                }
+                .jmb-text h2 {
+                    color: #F3E9F2;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                }
+            /* Section 2: Products */
+                #cards {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .card-image > img {
+                    width: 100%;
+                    height: 290px;
+                }
+                .card-body {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                .card-body h3, h4 {
+                    font-size: 1.3em;
+                }
+                
+        /* produit.html */
+        /* panier.html */
+        /* confirmation.html */
+    /* Footer */
+        footer {
+            background-color: #F3E9F2;
+            margin: 0;
+        }
+        footer p {
+            font-size: 1em;
+        }
+
+
+
+/* Responsive Web */
+    /* Mobile Extra-Small */
     @media (max-width: 320px) {
-      .jumbotron > .jmb-text h1 {
-        font-size: 2.5em;
-      }
+        /* Header */
+        /* Main */
+            /* index.html */
+                /* Section 1: Presentation */
+                    .jmb-text h1 {
+                        font-size: 2.2em;
+                    }
+                    .jmb-text h2 {
+                        font-size: 1em;
+                    }
+                /* Section 2: Products */
+                    .card-image > img {
+                        width: 100%;
+                        height: 200px;
+                    }
+                    .card-body h3, h4 {
+                        font-size: 1.1em;
+                    }
+        /* Footer */
     }
-  .jumbotron > .jmb-text h1 span {
-    color: #905BF9;
-  }
-  .jumbotron > .jmb-text h2 {
-    color: #F3E9F2;
-    font-size: 1.5em;
-    font-weight: 600;
-  }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-      .jumbotron > .jmb-text h2 {
-        font-size: 1.2em;
-      }
+
+    /* Between Mobile and Tablette : 1 */
+    @media screen and (min-width: 450px) and (max-width: 580px) {
+        /* Header */  
+        /* Main */
+            /* index.html */
+                /* Section 1: Presentation */
+                    .jmb-text h1 {
+                        font-size: 2.9em;
+                    }
+                    .jmb-text h2 {
+                        font-size: 1.3em;
+                    }
+                /* Section 2: Products */
+                    .card-image > img {
+                        height: 370px;
+                    }
+        /* Footer */
     }
-    @media (max-width: 320px) {
-      .jumbotron > .jmb-text h2 {
-        font-size: 1.1em;
-      }
+
+    /* Between Mobile and Tablette : 2 */
+    @media screen and (min-width: 581px) and (max-width: 767px) {
+        /* Header */  
+        /* Main */
+            /* index.html */
+                /* Section 1: Presentation */
+                    .jmb-text h1 {
+                        font-size: 3.3em;
+                    }
+                    .jmb-text h2 {
+                        font-size: 1.5em;
+                    }
+                /* Section 2: Products */
+                    .card-image > img {
+                        height: 420px;
+                    }
+        /* Footer */
     }
-  
-  /*Section 2: Products*/
-  #products {
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .products__item {
-    width: 32%;
-    height: auto;
-  }
-  .products__item > a > img {
-    width: 100%;
-    height: 100%;
-  }
-  .card-body {
-    position: relative;
-  }
-  .card-body > h3 {
-    font-size: 1.4em;
-  }
-  .card-body > h4 {
-    font-size: 1.3em;
-    position: absolute;
-    right: 20px;
-    top: 18px;
-  }
-  .card-body > p {
-    font-size: 1em;
-    text-align: justify;
-  }
 
-  .btn-primary {
-    background-color: #B57096;
-    color: #24111F;
-    border: none;
-  }
-  .btn-primary:hover {
-    background-color: #905BF9;
-    border: none;
-  }
-      
-/* Main - produit.html */
-/* Main - panier.html */
-/* Main - confirmation.html */
+    /* Tablette */
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        /* Header */  
+            nav img {
+                width: 100%;
+            }
+            .fa-shopping-bag {
+                padding-right: 25px;
+            }
+        /* Main */
+            /* index.html */
+                /* Section 1: Presentation */
+                    .jmb-text h1 {
+                        font-size: 5em;
+                    }
+                    .jmb-text h2 {
+                        font-size: 1.73em;
+                    }
+                /* Section 2: Products */
+                    #cards {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                    }
+                    #products__card {
+                        width: 48%;
+                    }
+                    .card-image > img {
+                        height: 330px;
+                    }
+        /* Footer */
+    }
 
-/* Footer */
-footer {
-  background-color: #F3E9F2;
-  margin: 0;
-}
-footer ul > li {
-  color: #24111F;
-  font-size: 1em;
-  font-weight: bold;
-}
-footer p {
-  color: #24111F;
-  font-size: 0.9em;
-}
-
-.foot-display {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .foot-display {
-    flex-direction: column;
-  }
-}
+    /* Desktop */
+    @media screen and (min-width: 992px) {
+        /* Header */  
+            nav img {
+                width: 100%;
+            }
+            .fa-shopping-bag {
+                padding-right: 25px;
+            }
+        /* Main */
+            /* index.html */
+                /* Section 1: Presentation */
+                    .jmb-text h1 {
+                        font-size: 6.5em;
+                    }
+                    .jmb-text h2 {
+                        font-size: 1.5em;
+                    }
+                /* Section 2: Products */
+                    #cards {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                    }
+                    #products__card {
+                        width: 48%;
+                    }
+                    .card-image > img {
+                        height: 360px;
+                    }
+        /* Footer */
+    }

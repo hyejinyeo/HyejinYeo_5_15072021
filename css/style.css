@@ -18,6 +18,19 @@ a:visited {
 li {
     list-style: none;
 }
+.btn-primary {
+    background-color: #B57096;
+    color: #24111F;
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    margin: auto;
+}
+.btn-primary:hover {
+    background-color: #905BF9;
+    border: none;
+}
 
 /* Mobile First */
     /* Header */
@@ -92,10 +105,47 @@ li {
                 .card-body h3, h4 {
                     font-size: 1.3em;
                 }
-                
+                .products--error {
+                    font-size: 5em;
+                    color: #999;
+                    margin: 40px 0 40px 0;
+                } 
+            /* Section 4: Product description */
+                .card__description--image > img {
+                    width: 100%;
+                    height: auto;
+                }
+                .card__description--info {
+                    padding-left: 10px;
+                }
+                #description__id {
+                    font-size: 0.8em;
+                }
+                #description__option {
+                    width: 180px;
+                    height: 25px;
+                }
+                #description__quantity {
+                    width: 172px;
+                    height: 25px;
+                }
+                .card__button {
+                    display: flex;
+                    margin: 20px 0;
+                }
+            /* Section 5: Cart */
+            /* Section 6: Order form */
         /* produit.html */
         /* panier.html */
         /* confirmation.html */
+            .confirmation > i {
+                font-size: 5em;
+                color: #B57096;
+                margin: 30px 0 40px 0;
+            } 
+            .confirmation > h2 {
+                margin-bottom: 40px;
+            }
     /* Footer */
         footer {
             background-color: #F3E9F2;
@@ -104,7 +154,6 @@ li {
         footer p {
             font-size: 1em;
         }
-
 
 
 /* Responsive Web */
@@ -128,6 +177,16 @@ li {
                     .card-body h3, h4 {
                         font-size: 1.1em;
                     }
+                /* Section 4: Product description */
+                    #description__option {
+                        width: 130px;
+                    }
+                    #description__quantity {
+                        width: 122px;
+                    }
+                    .btn-primary {
+                        width: 90%;
+                    }
         /* Footer */
     }
 
@@ -147,6 +206,14 @@ li {
                     .card-image > img {
                         height: 370px;
                     }
+                /* Section 4: Product description */
+                #description__option {
+                    width: 220px;
+                }
+                #description__quantity {
+                    width: 212px;
+                }
+
         /* Footer */
     }
 
@@ -165,6 +232,23 @@ li {
                 /* Section 2: Products */
                     .card-image > img {
                         height: 420px;
+                    }
+                /* Section 4: Product description */
+                    .customer_input {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .option {
+                        width: 60%;
+                    }
+                    .quantity {
+                        width: 40%;
+                    }
+                    #description__option {
+                        width: 180px;
+                    }
+                    #description__quantity {
+                        width: 100px;
                     }
         /* Footer */
     }
@@ -199,6 +283,40 @@ li {
                     .card-image > img {
                         height: 330px;
                     }
+                /* Section 4: Product description */
+                    .customer_input {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .option {
+                        width: 60%;
+                    }
+                    .quantity {
+                        width: 40%;
+                    }
+                    #description__option {
+                        width: 180px;
+                    }
+                    #description__quantity {
+                        width: 100px;
+                    }
+                /* Section 4: Product description */
+                    .customer_input {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .option {
+                        width: 60%;
+                    }
+                    .quantity {
+                        width: 40%;
+                    }
+                    #description__option {
+                        width: 180px;
+                    }
+                    #description__quantity {
+                        width: 100px;
+                    }
         /* Footer */
     }
 
@@ -227,10 +345,41 @@ li {
                         justify-content: space-around;
                     }
                     #products__card {
-                        width: 48%;
+                        width: 49%;
+                    }
+                    .bloc--invisible {
+                        width: 49%;
                     }
                     .card-image > img {
                         height: 360px;
+                    }
+                    /* Section 4: Product description */
+                    .card__description {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                    }
+                    .card__description--image, .card__description--info {
+                        width: 50%;
+                    }
+                    .card__description--info {
+                        padding: 0 15px;
+                    }
+                    .customer_input {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .option {
+                        width: 60%;
+                    }
+                    .quantity {
+                        width: 40%;
+                    }
+                    #description__option {
+                        width: 170px;
+                    }
+                    #description__quantity {
+                        width: 80px;
                     }
         /* Footer */
     }

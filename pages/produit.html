@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Orinoco | Orinobears - Oursons en peluche personnalisables</title>
-    <meta name="description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main.">
+	<title>Orinoco | Produit </title>
+    <meta name="description" content="Orinoco | Orinobears - Description d'ourson">
 	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="https://hyejinyeo.github.io/HyejinYeo_5_15072021/index.html"/>
+	<link rel="canonical" href="https://hyejinyeo.github.io/HyejinYeo_5_15072021/pages/produit.html"/>
 
 	<!-- Meta tags SEO: Open Graph & Twitter Card -->
-    <meta property="og:title" content="Orinoco | Orinobears - Oursons en peluche personnalisables" />
+    <meta property="og:title" content="Orinoco | Produit" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main." />
-    <meta property="og:url" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/" />
+    <meta property="og:description" content="Orinoco | Orinobears - Description d'ourson" />
+    <meta property="og:url" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/pages/produit.html" />
 	<meta property="og:image" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/images/Logo_Orinoco.webp" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Orinoco | Orinobears - Oursons en peluche personnalisables">
-	<meta name="twitter:description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main.">
+	<meta name="twitter:title" content="Orinoco | Produit">
+	<meta name="twitter:description" content="Orinoco | Orinobears - Description d'ourson">
 
     <!-- CSS Bootstrap from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -36,26 +36,22 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <nav class="navbar navbar-expand bg-transparent navbar-light py-0 nav-display">
+                <nav class="navbar bg-transparent navbar-light p-0 nav-display">
                     <!-- Logo -->
                     <a class="navbar-brand py-0" href="../index.html">
                         <img src="../images/Logo_Orinoco.webp" alt="Logo Orinoco">
                     </a>
                     <!-- Nav -->
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link" href="index.html">ACCUEIL</a>
-                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/panier.html">
+                            <a class="nav-link" href="./panier.html">
                                 <i class="fas fa-shopping-bag"></i>
                             </a>
                         </li>
                     </ul>
                 </nav>
             </div>
-        </div>
-        
+        </div>   
     </header>
     <main>
         <div class="container-fluid p-4 mb-2">
@@ -66,24 +62,40 @@
                     <li class="breadcrumb-item active" aria-current="page">PRODUIT</li>
                 </ol>
             </section>
-            <!-- Section 4: Product details -->
-            <section id="products__details">
-                
+            <!-- Section 4: Product description -->
+            <section id="products__description">
+                <div class="card card__description">
+                    <div class="card__description--image">
+                        <img id="description__image" class="" src="" alt="Ourson en peluche">
+                    </div>
+                    <div class="card__description--info mt-2">
+                        <h3 id="description__name" class=""></h3>
+                        <p id="description__id" class=""></p>
+                        <h4 id="description__price" class=""></h4>
+                        <p id="description__description">Description</p>
+                        <div class="customer_input">
+                            <div class="option mb-2">
+                                <label for="description__option">Couleur : </label>
+                                <select name="description__option" id="description__option"></select>
+                            </div>
+                            <div class="quantity mb-2">
+                                <label for="description__quantity">Quantité : </label>
+                                <input id="description__quantity" type="number" name="description__quantity" value="1" min="1">
+                            </div>
+                        </div>
+                        <div class="card__button">
+                            <button class="btn-primary">AJOUTER AU PANIER</button>
+                        </div>
+                    </div>
+                    
+                </div>
             </section>
         </div>
     </main>
     <footer>
         <div class="container-fluid p-4 m-0">
-            <!-- <ul class="m-0 p-0 foot-display">
-                <li>FAQ</li>
-                <li>LIVRAISON</li>
-                <li>ÉCHANGE / RETOUR</li>
-                <li>CONTACT</li>
-                <li>MENTIONS LÉGALES</li>
-            </ul> -->
             <p class="text-center pt-3">© Copyright 2021 Orinoco</p>
         </div>
-        <!--A propos, Conditions d'utilisateur, Copyright, Nous contacter, etc-->
     </footer>
 
 <!-- CSS Bootstrap components -->

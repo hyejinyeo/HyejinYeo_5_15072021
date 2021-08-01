@@ -13,19 +13,8 @@ function getProducts() {
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
         })
-        .then(function(products) {
-            return products
-        })
         .catch(function(error) {
-            let errorMessage = document.getElementById("products")
-            errorMessage.innerHTML = `
-                <div class="text-center">
-                    <i class="fas fa-exclamation-triangle products--error"></i>
-                    <h2 class="mb-4">Erreur du Serveur</h2>
-                    <p class="mb-5">Nous n'avons pas réussi à afficher nos produits.</p>
-                </div>
-            `
-            error()
+            showErrorMessage()
         })
 }
 
@@ -41,19 +30,3 @@ function createCards(product) {
     
     document.getElementById("cards").appendChild(cloneElement)
 }
-
-
-/* Créer une carte supplementaire */
-
-//Use 'Modulo' for an additional card when the number of item is odd. 
-//let emptyCardCreator = numberOfItem % 2 ;
-//if emptyCardCreator = 1; Create empty card ;
-
-// const evenOddCalculate = (itemCount) => {
-//     let cardCreator = (itemCount % 2);
-//     if (cardCreator == 1) {
-//         console.log('Create a card');
-//     }
-// };
-// evenOddCalculate(5);
-

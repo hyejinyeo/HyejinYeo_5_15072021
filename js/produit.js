@@ -2,6 +2,7 @@
 (async function() {
     const productId = getProductId()
     const productInfo = await getProductInfo(productId)
+    changeBreadcrumb(productInfo)
     insertProductInfo(productInfo)
 })()
 
@@ -15,16 +16,13 @@ function getProductInfo(productId) {
     return fetch(`http://localhost:3000/api/teddies/${productId}`)
         .then((responseHttp) => responseHttp.json())
         .catch(function(error) {
-            let errorMessage = document.getElementById("products__description")
-            errorMessage.innerHTML = `
-                <div class="text-center">
-                    <i class="fas fa-exclamation-triangle products--error"></i>
-                    <h2 class="mb-4">Erreur du Serveur</h2>
-                    <p class="mb-5">Nous n'avons pas réussi à afficher nos produits.</p>
-                </div>
-            `
-            error()
+            showErrorMessage()
         })
+}
+
+/* Modifier breadcrumb - Nom d'ourson */
+function changeBreadcrumb(productInfo) {
+    document.getElementById('breadcrumb-name').textContent = `OURSON :  ` + productInfo.name
 }
 
 /* Insérer les données */

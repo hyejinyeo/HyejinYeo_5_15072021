@@ -5,25 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Orinoco | Orinobears - Oursons en peluche personnalisables</title>
-    <meta name="description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main.">
+	<title>Orinoco | Panier</title>
+    <meta name="description" content="Orinoco | Orinobears - Votre panier">
 	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="https://hyejinyeo.github.io/HyejinYeo_5_15072021/index.html"/>
+	<link rel="canonical" href="https://hyejinyeo.github.io/HyejinYeo_5_15072021/pages/panier.html"/>
 
 	<!-- Meta tags SEO: Open Graph & Twitter Card -->
-    <meta property="og:title" content="Orinoco | Orinobears - Oursons en peluche personnalisables" />
+    <meta property="og:title" content="Orinoco | Panier" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main." />
-    <meta property="og:url" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/" />
+    <meta property="og:description" content="Orinoco | Orinobears - Votre panier" />
+    <meta property="og:url" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/pages/panier.html" />
 	<meta property="og:image" content="https://hyejinyeo.github.io/HyejinYeo_5_15072021/images/Logo_Orinoco.webp" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Orinoco | Orinobears - Oursons en peluche personnalisables">
-	<meta name="twitter:description" content="Orinobears est un site e-commerce thématique de l'Orinoco où vous pouvez personnaliser votre ourson en peluche 100% fait main.">
+	<meta name="twitter:title" content="Orinoco | Panier">
+	<meta name="twitter:description" content="Orinoco | Orinobears - Votre panier">
 
-    <!-- CSS Bootstrap from CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="../css/style.css" />
     <!-- Favicon, FontAwesome CDN, Font -->
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
@@ -31,31 +27,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS Bootstrap from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
     <header>
         <div class="container-fluid">
             <div class="row">
-                <nav class="navbar navbar-expand bg-transparent navbar-light py-0 nav-display">
+                <nav class="navbar bg-transparent navbar-light p-0 nav-display">
                     <!-- Logo -->
                     <a class="navbar-brand py-0" href="../index.html">
                         <img src="../images/Logo_Orinoco.webp" alt="Logo Orinoco">
                     </a>
                     <!-- Nav -->
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link" href="index.html">ACCUEIL</a>
-                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/panier.html">
+                            <a class="nav-link" href="./panier.html">
                                 <i class="fas fa-shopping-bag"></i>
                             </a>
                         </li>
                     </ul>
                 </nav>
             </div>
-        </div>
-        
     </header>
     <main>
         <div class="container-fluid p-4 mb-2">
@@ -67,7 +62,8 @@
                 </ol>
             </section>
             <!-- Section 5: Cart -->
-            <section id="products__details">
+            <section id="cart" class="my-4">
+                <h3>VOTRE PANIER</h3>
                 <table class="table text-center">
                     <thead>
                       <tr>
@@ -76,6 +72,7 @@
                         <th scope="col">Nom</th>
                         <th scope="col">Référence</th>
                         <th scope="col">Prix</th>
+                        <th scope="col">Option</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Total</th>
                       </tr>
@@ -87,41 +84,77 @@
                         <td>Name</td>
                         <td>Product ID</td>
                         <td>Unit Price</td>
-                        <td>Quantity</td>
+                        <td>Couleur</td>
+                        <td>
+                            <i class="far fa-minus-square"></i>
+                            Quantity
+                            <i class="far fa-plus-square"></i>
+                            <i class="far fa-trash-alt"></i>
+                        </td>
                         <td>Total Price</td>
                       </tr>
                     </tbody>
                   </table>
             </section>
             <!-- Section 6: Order form -->
-            <section id="order-form">
-                <form>
-                    <div class="form-group">
-                        <label for="" >Nom :</label>
-                        <input type="text" class="form-control" placeholder="DeBondy" id="nom">
+            <section id="order-form" class="mt-5">
+                <h3>FORMULAIRE DE COMMANDE</h3>
+                <form action="" method="POST">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" class="form-control" name="prenom" placeholder="Prénom">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nom">Nom</label>
+                            <input type="text" class="form-control" name="nom" placeholder="Nom">
+                        </div>
+                      </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            <small></small>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="" >Prenom :</label>
-                        <input type="text" class="form-control" placeholder="O'Bongout" id="prenom">
-                        
+                        <label for="inputAddress">Adresse</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
-                    <button type="submit" class="button btn-primary">Commander</button>
-                </form>  
+                    <div class="form-group">
+                        <label for="inputAddress2">Adresse 2</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Ville</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Code Postal</label>
+                            <input type="text" maxlength="5" class="form-control" id="inputZip">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Check me out
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">COMMANDER</div>
+                </form>
+
+                <a href="../pages/confirmation.html">Temporary link to confirmation page</a>
+
             </section>
         </div>
     </main>
     <footer>
         <div class="container-fluid p-4 m-0">
-            <!-- <ul class="m-0 p-0 foot-display">
-                <li>FAQ</li>
-                <li>LIVRAISON</li>
-                <li>ÉCHANGE / RETOUR</li>
-                <li>CONTACT</li>
-                <li>MENTIONS LÉGALES</li>
-            </ul> -->
             <p class="text-center pt-3">© Copyright 2021 Orinoco</p>
         </div>
-        <!--A propos, Conditions d'utilisateur, Copyright, Nous contacter, etc-->
     </footer>
 
 <!-- CSS Bootstrap components -->

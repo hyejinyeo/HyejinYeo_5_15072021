@@ -50,9 +50,27 @@ li {
             width: 90%;
             height: auto;
         }
+        #nav-icon {
+            color: #565656;
+        }
         .fa-shopping-bag {
             font-size: 1.7em;
             padding-right: 20px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link span {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 0.7em;
+            color: #FFF;
+            position: absolute;
+            top: 17.5px;
+            left: 2.1px;
         }
         
     /* Main */
@@ -93,9 +111,21 @@ li {
                     display: flex;
                     flex-direction: column;
                 }
-                .card-image > img {
+                #products__card {
+                    display: flex;
+                    flex-direction: column;
                     width: 100%;
-                    height: 290px;
+                    height: 100%;
+                }
+                .card-image {
+                    height: 100%;
+                    max-height: 330px;
+                    overflow: hidden;
+                }
+                #products__card > .card-image > img {
+                    width: 100%;
+                    height: 80%;
+                    object-fit: cover;
                 }
                 .card-body {
                     display: flex;
@@ -170,10 +200,6 @@ li {
                         font-size: 1em;
                     }
                 /* Section 2: Products */
-                    .card-image > img {
-                        width: 100%;
-                        height: 200px;
-                    }
                     .card-body h3, h4 {
                         font-size: 1.1em;
                     }
@@ -203,8 +229,8 @@ li {
                         font-size: 1.3em;
                     }
                 /* Section 2: Products */
-                    .card-image > img {
-                        height: 370px;
+                    .card-image {
+                        max-height: 400px;
                     }
                 /* Section 4: Product description */
                 #description__option {
@@ -230,8 +256,8 @@ li {
                         font-size: 1.5em;
                     }
                 /* Section 2: Products */
-                    .card-image > img {
-                        height: 420px;
+                    .card-image {
+                        max-height: 550px;
                     }
                 /* Section 4: Product description */
                     .customer_input {
@@ -275,13 +301,16 @@ li {
                     #cards {
                         flex-direction: row;
                         flex-wrap: wrap;
-                        justify-content: space-around;
+                        justify-content: space-between;
                     }
                     #products__card {
                         width: 48%;
                     }
-                    .card-image > img {
-                        height: 330px;
+                    .card-image {
+                        max-height: 230px;
+                    }
+                    .card-body h3, h4 {
+                        font-size: 1.2em;
                     }
                 /* Section 4: Product description */
                     .customer_input {
@@ -339,6 +368,10 @@ li {
                         font-size: 1.5em;
                     }
                 /* Section 2: Products */
+                    #products {
+                        max-width: 1280px;
+                        margin: 0 auto;
+                    }
                     #cards {
                         flex-direction: row;
                         flex-wrap: wrap;
@@ -347,11 +380,8 @@ li {
                     #products__card {
                         width: 49%;
                     }
-                    .bloc--invisible {
-                        width: 49%;
-                    }
-                    .card-image > img {
-                        height: 360px;
+                    .card-image {
+                        max-height: 305px;
                     }
                     /* Section 4: Product description */
                     .card__description {

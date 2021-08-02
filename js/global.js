@@ -9,3 +9,5 @@ function showErrorMessage () {
                 </div>
             `
 }
+
+/* Afficher le nombre d'article ajouté dans le panier - Nav */

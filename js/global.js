@@ -1,6 +1,6 @@
 /* Afficher une message d'errueur du serveur */
 function showErrorMessage () {
-    let errorMessage = document.querySelector(".errorMessage")
+    let errorMessage = document.querySelector('.errorMessage')
     errorMessage.innerHTML = `
                 <div class="text-center">
                     <i class="fas fa-exclamation-triangle products--error"></i>
@@ -10,4 +10,12 @@ function showErrorMessage () {
             `
 }
 
-/* Afficher le nombre d'article ajouté dans le panier - Nav */
+
+
+/* Afficher le nombre d'article ajouté au panier - nav icone */
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('QuantityInCart')
+    if (productNumbers) {
+        document.querySelector('.nav-link span').textContent = productNumbers
+    }
+}

@@ -35,8 +35,7 @@ function createCards(product) {
 
 
 
-/********************* AFFICHER LE NOMBRE D'ARTICLE DANS LE PANIER - NAV ICONE *********************/
+/********************* AFFICHER LE NOMBRE D'ARTICLE(S) DANS LE PANIER - NAV ICONE *********************/
 
-/* Afficher le nombre d'article ajouté dans le panier */ 
-onLoadCartNumbers()
-
+/* Afficher le nombre d'article(s) ajouté(s) au panier */ 
+onLoadCartNumbers();

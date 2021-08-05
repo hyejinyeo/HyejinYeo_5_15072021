@@ -21,16 +21,15 @@ li {
 .btn-primary {
     background-color: #B57096;
     color: #24111F;
+    text-align: center;
     width: 250px;
     height: 40px;
+    line-height: 40px;
     border: none;
     border-radius: 25px;
     margin: auto;
 }
-.btn-primary:hover {
-    background-color: #905BF9;
-    border: none;
-}
+
 
 /* Mobile First */
     /* Header */
@@ -161,9 +160,21 @@ li {
                 }
                 .card__button {
                     display: flex;
-                    margin: 20px 0;
+                    width: 250px;
+                    margin: 20px auto 30px auto;
+                }
+                .card__button:hover .btn-primary {
+                    background-color: #905BF9;
+                    border: none;
                 }
             /* Section 5: Cart */
+                .cart-img {
+                    width: 100px;
+                    height: 65px;
+                }
+                .fa-minus-square, .fa-plus-square, .fa-trash-alt {
+                    cursor: pointer;
+                }
             /* Section 6: Order form */
         /* produit.html */
         /* panier.html */

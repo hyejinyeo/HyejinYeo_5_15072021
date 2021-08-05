@@ -1,4 +1,6 @@
-/* Afficher les produits */
+/********************* AFFICHER TOUS LES PRODUITS *********************/
+
+/* Afficher tous les produits */
 (async function() {
     const products = await getProducts()
     for (product of products) {
@@ -30,3 +32,11 @@ function createCards(product) {
     
     document.getElementById("cards").appendChild(cloneElement)
 }
+
+
+
+/********************* AFFICHER LE NOMBRE D'ARTICLE DANS LE PANIER - NAV ICONE *********************/
+
+/* Afficher le nombre d'article ajouté dans le panier */ 
+onLoadCartNumbers()
+

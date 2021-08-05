@@ -55,9 +55,9 @@ function insertProductInfo(productInfo) {
 
 
 
-/********************* AFFICHER LE NOMBRE D'ARTICLE DANS LE PANIER - NAV ICONE *********************/
+/********************* AFFICHER LE NOMBRE D'ARTICLE(S) DANS LE PANIER - NAV ICONE *********************/
 
-/* Afficher le nombre d'article ajouté dans le panier */ 
+/* Afficher le nombre d'article(s) ajouté(s) au panier */ 
 onLoadCartNumbers();
 
 
@@ -79,19 +79,20 @@ let cartButton = document.querySelector('.card__button');
 cartButton.addEventListener('click', () => {
     modifyCartNumbers(); // Local Storage - QuantityInCart
     addToCart(); // Local Storage - Cart
+    addUpTotalPrice(); // Local Storage - TotalPrice
 })
 
-/* Augmenter le nombre de 'quantityInCart' du Local Storage en fonction de 'quantityInput' et afficher la valeur finale sur l'icône de Nav */
+/* Augmenter le nombre de 'QuantityInCart' du Local Storage en fonction de 'quantityInput' et afficher la valeur finale sur l'icône de Nav */
 function modifyCartNumbers() {
-    let productNumbers = localStorage.getItem('quantityInCart');
+    let productNumbers = localStorage.getItem('QuantityInCart');
     productNumbers = parseInt(productNumbers); // String -> Number
     let quantityInput = document.getElementById('description__quantity').value;
     quantityInput = parseInt(quantityInput);
     if (productNumbers) {
-        localStorage.setItem('quantityInCart', productNumbers + quantityInput);
+        localStorage.setItem('QuantityInCart', productNumbers + quantityInput);
         document.querySelector('.nav-link span').textContent = productNumbers + quantityInput;
     } else {
-        localStorage.setItem('quantityInCart', quantityInput);
+        localStorage.setItem('QuantityInCart', quantityInput);
         document.querySelector('.nav-link span').textContent = quantityInput;
     }
 }
@@ -124,4 +125,15 @@ function addToCart() {
     alert('Votre ourson a bien été ajouté au panier !');
     localStorage.setItem('Cart', JSON.stringify(productInCart));
     window.location.reload();
+}
+
+/* Calculer le prix total - 'TotalPrice' du Local Storage */
+function addUpTotalPrice() {
+    let cartPrice = localStorage.getItem('TotalPrice');
+    if (cartPrice !== null) {
+        cartPrice = parseInt(cartPrice);
+        localStorage.setItem('TotalPrice', cartPrice + parseFloat(productPrice.innerHTML))
+    } else {
+        localStorage.setItem('TotalPrice', parseFloat(productPrice.innerHTML))
+    }
 }

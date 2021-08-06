@@ -175,6 +175,18 @@ li {
                 .fa-minus-square, .fa-plus-square, .fa-trash-alt {
                     cursor: pointer;
                 }
+                .panier__button {
+                    text-align: center;
+                    width: 250px;
+                    margin: 20px auto 30px auto;
+                }
+                .panier__button button {
+                    line-height: 0;
+                }
+                .panier__button:hover .btn-primary {
+                    background-color: #905BF9;
+                    border: none;
+                }
             /* Section 6: Order form */
         /* produit.html */
         /* panier.html */

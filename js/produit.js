@@ -87,7 +87,7 @@ function modifyCartNumbers() {
     let productNumbers = localStorage.getItem('QuantityInCart');
     productNumbers = parseInt(productNumbers); // String -> Number
     let quantityInput = document.getElementById('description__quantity').value;
-    quantityInput = parseInt(quantityInput);
+    quantityInput = parseInt(quantityInput); // String -> Number
     if (productNumbers) {
         localStorage.setItem('QuantityInCart', productNumbers + quantityInput);
         document.querySelector('.nav-link span').textContent = productNumbers + quantityInput;

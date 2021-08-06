@@ -71,7 +71,7 @@
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Ourson</th>
-                            <th scope="col">Prix</th>
+                            <th scope="col">Prix à l'unité</th>
                             <th scope="col">Couleur</th>
                             <th scope="col">Quantité</th>
                         </tr>
@@ -92,37 +92,39 @@
                 <h3>FORMULAIRE DE COMMANDE</h3>
                 <form action="" method="POST">
                     <div class="form-row">
-                        <div class="col-6">
+                        <div class="col-12 pb-2">
                             <label for="prenom" class="form-label">Prénom</label>
                             <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 pb-2">
                             <label for="nom" class="form-label">Nom</label>
                             <input type="text" class="form-control" name="nom" placeholder="Nom" required>
                         </div>
                       </div>
                     <div class="form-row">
-                        <div class="">
+                        <div class="pb-2">
                             <label for="inputEmail4" class="form-label">Email</label>
                             <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
                             <small></small>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row pb-2">
                         <label for="inputAddress" class="form-label">Adresse</label>
                         <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row pb-2">
                         <div class="form-group">
                             <label for="inputCity" class="form-label">Ville</label>
                             <input type="text" class="form-control" id="inputCity" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group pb-2">
                             <label for="inputZip" class="form-label">Code Postal</label>
                             <input type="text" maxlength="5" class="form-control" id="inputZip" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">COMMANDER</div>
+                    <div class="panier__button">
+                        <button type="submit" class="btn btn-primary">COMMANDER</button>
+                    </div>
                 </form>
 
                 <a href="../pages/confirmation.html">Temporary link to confirmation page</a>

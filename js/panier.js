@@ -42,7 +42,7 @@ function displayProductsInCart() {
         </tr>
         `
     }
-    // Boutons
+    // Contrôle des boutons dans la colonne "Quantité"
     reduceQuantity();
     increaseQuantity();
     deleteProduct();
@@ -56,19 +56,21 @@ function displayTotalPrice() {
 
 
 
+///////////////////////// Part I was working on - temporary breakpoint /////////////////////////
 
-
-// Buttons inside Quantity 
-
+// Boutons dans la colonne "Quantité"
+/* Réduire la quantité */
 function reduceQuantity() {
-    //let quantityMinus = document.getElementById('quantityMinus');
-    //quantityMinus.addEventListener('click', () => {
-    //    alert('You clicked on minus button')
-    //})
     // if remaining quantity is 1, entire line should be deleted
     // if remaining quantitiy is > 2, return remaining quantity -1
 
-
+    // Trial 1)
+    // let quantityMinus = document.getElementById('quantityMinus');
+    // quantityMinus.addEventListener('click', () => {
+    //    alert('You clicked on minus button')
+    // })
+    
+    //Trial 2)
     // let quantityMinus = document.getElementById('quantityMinus');
     // quantityMinus.addEventListener('click', () => {
     //     let product = productInCart.find(
@@ -80,25 +82,19 @@ function reduceQuantity() {
     // });
 }
 
+/* Augmenter la quantité */
 function increaseQuantity() {
-    //let quantityPlus = document.getElementById('quantityPlus');
-    //quantityPlus.addEventListener('click', () => {
+    // increase 1 on each click
+
+    // Trial 1)
+    // let quantityPlus = document.getElementById('quantityPlus');
+    // quantityPlus.addEventListener('click', () => {
     //    alert('You clicked on plus button')
-    //})
-    // increase 1 quantity of product on each click
+    // })
 }
 
 
-function deleteProduct(id, option) {
-    //for (let i = 0; i < productInCart.length; i++) {
-    //   if (productInCart[i].id === id && productInCart[i].option === option)  {
-    //        productInCart.splice(i, 1)
-    //    }
-    //}
-}
-
-
-//////////////////////// Part I was working on - temporary breakpoint
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 function deleteProduct() {
     let quantityDelete = document.querySelectorAll('#quantityDelete');
@@ -110,7 +106,7 @@ function deleteProduct() {
             let quantityOfProductToDelete = productInCart[d].quantity;
             let priceOfProductToDelete = productInCart[d].price;
             
-            // Filtre des items afin de laisser des produits differents
+            // Filtrer des items afin de laisser des produits différents uniquement
             productInCart = productInCart.filter( (el) => el.id !== idOfProductToDelete || el.option !== optionOfProductToDelete );
             localStorage.setItem('Cart', JSON.stringify(productInCart));
             
@@ -134,8 +130,9 @@ function deleteProduct() {
 
 /********************* FORMULAIRE *********************/
 
-//Once "COMMANDER" button is clicked, the number of items in local storage should be reset to 0
-//preventDefault for formulaire
+// Once "COMMANDER" button is clicked, the number of items in local storage should be reset to 0
+// localStorage.clear
+// preventDefault for formulaire
 
 
 

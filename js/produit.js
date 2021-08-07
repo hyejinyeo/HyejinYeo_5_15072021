@@ -130,10 +130,13 @@ function addToCart() {
 /* Calculer le prix total - 'TotalPrice' du Local Storage */
 function addUpTotalPrice() {
     let cartPrice = localStorage.getItem('TotalPrice');
+    let inputQuantity = productQuantity.value;
+    inputQuantity = parseInt(inputQuantity);
+    let inputPriceXQuantity = (parseFloat(productPrice.innerHTML) * inputQuantity);
     if (cartPrice !== null) {
         cartPrice = parseInt(cartPrice);
-        localStorage.setItem('TotalPrice', cartPrice + parseFloat(productPrice.innerHTML))
+        localStorage.setItem('TotalPrice', cartPrice + inputPriceXQuantity);
     } else {
-        localStorage.setItem('TotalPrice', parseFloat(productPrice.innerHTML))
+        localStorage.setItem('TotalPrice', inputPriceXQuantity);
     }
 }

@@ -118,7 +118,8 @@ function deleteProduct() {
             // Modifier 'TotalPrice'
             let cartPrice = localStorage.getItem('TotalPrice');
             cartPrice = parseInt(cartPrice);
-            localStorage.setItem('TotalPrice', cartPrice - priceOfProductToDelete);
+            let priceXquantityOfProductToDelete = quantityOfProductToDelete * priceOfProductToDelete;
+            localStorage.setItem('TotalPrice', cartPrice - priceXquantityOfProductToDelete);
             
             // Rechargement de la page
             window.location.reload();

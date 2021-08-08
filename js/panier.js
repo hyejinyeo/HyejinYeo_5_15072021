@@ -55,47 +55,87 @@ function displayTotalPrice() {
 }
 
 
-
-///////////////////////// Part I was working on - temporary breakpoint /////////////////////////
-
 // Boutons dans la colonne "Quantité"
 /* Réduire la quantité */
 function reduceQuantity() {
-    // if remaining quantity is 1, entire line should be deleted
-    // if remaining quantitiy is > 2, return remaining quantity -1
+    let quantityMinus = document.querySelectorAll('#quantityMinus');
+    for (let m = 0; m < quantityMinus.length; m++) {
+        quantityMinus[m].addEventListener('click', (event) => {
+            event.preventDefault();
+            let idOfProductToReduce = productInCart[m].id;
+            let optionOfProductToReduce = productInCart[m].option;
+            const unitPrice = productInCart[m].price;
+            
+            // Modifier 'Cart'
+            // Si (la quantité == 1 ) : Supprimer le produit
+            if (productInCart[m].quantity == 1) {
+                productInCart = productInCart.filter( (el) => el.id !== idOfProductToReduce || el.option !== optionOfProductToReduce );
+                localStorage.setItem('Cart', JSON.stringify(productInCart));
+            } 
+            // Else (la quantité >= 2) : Réduire 1 de quantité de produit : 'Cart'
+            else {
+                let product = productInCart.find(
+                    (obj) => obj.id === idOfProductToReduce && obj.option === optionOfProductToReduce
+                );
+                if (product) {
+                    product.quantity = product.quantity - 1; 
+                } 
+                localStorage.setItem('Cart', JSON.stringify(productInCart));
+            }
+            
+            // Modifier 'QuantityInCart'
+            let productNumbers = localStorage.getItem('QuantityInCart');
+            productNumbers = parseInt(productNumbers); // String -> Number
+            localStorage.setItem('QuantityInCart', productNumbers - 1);
+            
+            // Modifier 'TotalPrice'
+            let cartPrice = localStorage.getItem('TotalPrice');
+            cartPrice = parseInt(cartPrice);
+            localStorage.setItem('TotalPrice', cartPrice - unitPrice);
 
-    // Trial 1)
-    // let quantityMinus = document.getElementById('quantityMinus');
-    // quantityMinus.addEventListener('click', () => {
-    //    alert('You clicked on minus button')
-    // })
-    
-    //Trial 2)
-    // let quantityMinus = document.getElementById('quantityMinus');
-    // quantityMinus.addEventListener('click', () => {
-    //     let product = productInCart.find(
-    //         (obj) => obj.id === inputIdenfication && obj.option === inputColor
-    //         if (product) {
-    //             product.quantity += parseInt(inputQuantity);
-    //         } else {}
-    //     )
-    // });
+            // Rechargement de la page
+            window.location.reload();
+        })
+    }
 }
 
 /* Augmenter la quantité */
 function increaseQuantity() {
-    // increase 1 on each click
-
-    // Trial 1)
-    // let quantityPlus = document.getElementById('quantityPlus');
-    // quantityPlus.addEventListener('click', () => {
-    //    alert('You clicked on plus button')
-    // })
+    let quantityPlus = document.querySelectorAll('#quantityPlus');
+    for (let p = 0; p < quantityPlus.length; p++) {
+        quantityPlus[p].addEventListener('click', (event) => {
+            event.preventDefault();
+            let idOfProductToIncrease = productInCart[p].id;
+            let optionOfProductToIncrease = productInCart[p].option;
+            const unitPrice = productInCart[p].price;
+            
+            // Modifier 'Cart'
+            let product = productInCart.find(
+                (obj) => obj.id === idOfProductToIncrease && obj.option === optionOfProductToIncrease
+            );
+            if (product) {
+                product.quantity = product.quantity + 1; 
+            } 
+            localStorage.setItem('Cart', JSON.stringify(productInCart));
+            
+            // Modifier 'QuantityInCart'
+            let productNumbers = localStorage.getItem('QuantityInCart');
+            productNumbers = parseInt(productNumbers); // String -> Number
+            localStorage.setItem('QuantityInCart', productNumbers + 1);
+            
+            // Modifier 'TotalPrice'
+            let cartPrice = localStorage.getItem('TotalPrice');
+            cartPrice = parseInt(cartPrice);
+            localStorage.setItem('TotalPrice', cartPrice + unitPrice);
+            
+            // Rechargement de la page
+            window.location.reload();
+        })
+    }
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
+/* Supprimer le producit */
 function deleteProduct() {
     let quantityDelete = document.querySelectorAll('#quantityDelete');
     for (let d = 0; d < quantityDelete.length; d++) {

@@ -64,7 +64,7 @@
             </section>
             <!-- Section 5: Cart -->
             <section id="cart" class="my-4">
-                <h3>VOTRE PANIER</h3>
+                <h3 class="mb-4">VOTRE PANIER</h3>
                 <div class="table-responsive">
                 <table class="table table-responsive text-center">
                     <thead>
@@ -81,7 +81,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="4" class="h6 text-end">Total</td>
-                            <td colspan="2" class="text-center" id="cart-totalPrice">Total Price</td>
+                            <td colspan="1" class="text-center" id="cart-totalPrice">Total Price</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -89,46 +89,47 @@
             </section>
             <!-- Section 6: Order form -->
             <section id="order-form" class="mt-5">
-                <h3>FORMULAIRE DE COMMANDE</h3>
-                <form action="" method="POST">
-                    <div class="form-row">
-                        <div class="col-12 pb-2">
-                            <label for="prenom" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
-                        </div>
-                        <div class="col-12 pb-2">
-                            <label for="nom" class="form-label">Nom</label>
-                            <input type="text" class="form-control" name="nom" placeholder="Nom" required>
-                        </div>
-                      </div>
-                    <div class="form-row">
-                        <div class="pb-2">
-                            <label for="inputEmail4" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
-                            <small></small>
-                        </div>
+                <h3 class="mb-4">FORMULAIRE DE COMMANDE</h3>
+                <form id="formulaire" method="POST">
+                    <div class="form-row pb-2">
+                        <label for="firstName" class="form-label h6">Prénom</label>
+                        <input 
+                            type="text" class="form-control" id="firstName" placeholder="ex) O'bongout" required
+                            pattern="/^[a-zA-Z]"
+                        >
                     </div>
                     <div class="form-row pb-2">
-                        <label for="inputAddress" class="form-label">Adresse</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                        <label for="lastName" class="form-label h6">Nom de famille</label>
+                        <input 
+                            type="text" class="form-control" id="lastName" placeholder="ex) DeBondy" required
+                            pattern=""
+                        >
                     </div>
                     <div class="form-row pb-2">
-                        <div class="form-group">
-                            <label for="inputCity" class="form-label">Ville</label>
-                            <input type="text" class="form-control" id="inputCity" required>
-                        </div>
-                        <div class="form-group pb-2">
-                            <label for="inputZip" class="form-label">Code Postal</label>
-                            <input type="text" maxlength="5" class="form-control" id="inputZip" required>
-                        </div>
+                        <label for="address" class="form-label h6">Adresse</label>
+                        <input 
+                            type="text" class="form-control" id="address" placeholder="ex) 123 rue Roger Salengro" required
+                            pattern=""
+                        >
+                    </div>
+                    <div class="form-row pb-2">
+                        <label for="city" class="form-label h6">Ville</label>
+                        <input 
+                            type="text" class="form-control" id="city" placeholder="ex) Bondy" required
+                            pattern=""
+                        >
+                    </div>
+                    <div class="form-row pb-2">
+                        <label for="email" class="form-label h6">E-mail</label>
+                        <input 
+                            type="email" class="form-control" id="email" placeholder="ex) obongoutdebondy@orinoco.com" required
+                            pattern=""
+                        >
                     </div>
                     <div class="panier__button">
                         <button type="submit" class="btn btn-primary">COMMANDER</button>
                     </div>
                 </form>
-
-                <a href="../pages/confirmation.html">Temporary link to confirmation page</a>
-
             </section>
         </div>
     </main>
@@ -146,19 +147,3 @@
 <script src="../js/panier.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-<!--
-    ● une page “panier” contenant un résumé des produits dans le panier, 
-    le prix total et un formulaire permettant de passer une commande. 
-    Les données du formulaire doivent être correctes et bien formatées avant d'être renvoyées au back-end. 
-    Par exemple, pas de texte dans les champs date ;
--->
-
-
-
-

@@ -91,43 +91,55 @@
             <section id="order-form" class="mt-5">
                 <h3 class="mb-4">FORMULAIRE DE COMMANDE</h3>
                 <form id="formulaire" method="POST">
-                    <div class="form-row pb-2">
+                    <div class="form-group pb-2">
                         <label for="firstName" class="form-label h6">Prénom</label>
                         <input 
-                            type="text" class="form-control" id="firstName" placeholder="ex) O'bongout" required
-                            pattern="/^[a-zA-Z]"
+                            type="text" class="form-control" id="firstName" required
+                            autocomplete="off" placeholder="ex) Norbert" 
+                            minlength="1" maxlength="50"
+                            pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*"
+                            title="Prénom peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et [ ] [.] ['] [-]."
                         >
                     </div>
-                    <div class="form-row pb-2">
+                    <div class="form-group pb-2">
                         <label for="lastName" class="form-label h6">Nom de famille</label>
                         <input 
-                            type="text" class="form-control" id="lastName" placeholder="ex) DeBondy" required
-                            pattern=""
+                            type="text" class="form-control" id="lastName" required
+                            autocomplete="off" placeholder="ex) Ourson d'Orinoco" 
+                            minlength="1" maxlength="50"
+                            pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*"
+                            title="Nom de famille peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et [ ] [.] ['] [-]."
                         >
                     </div>
-                    <div class="form-row pb-2">
+                    <div class="form-group pb-2">
                         <label for="address" class="form-label h6">Adresse</label>
                         <input 
-                            type="text" class="form-control" id="address" placeholder="ex) 123 rue Roger Salengro" required
-                            pattern=""
+                            type="text" class="form-control" id="address" required
+                            autocomplete="off" placeholder="ex) 123 rue Orinoco"
+                            minlength="1" maxlength="120"
+                            pattern="[0-9a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ ,.'-/]*"
                         >
                     </div>
-                    <div class="form-row pb-2">
+                    <div class="form-group pb-2">
                         <label for="city" class="form-label h6">Ville</label>
                         <input 
-                            type="text" class="form-control" id="city" placeholder="ex) Bondy" required
-                            pattern=""
+                            type="text" class="form-control" id="city" required
+                            autocomplete="off" placeholder="ex) Orinoco" 
+                            minlength="1" maxlength="50"
+                            pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ'-]*"
+                            title="Nom de ville peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et ['] [-]."
                         >
                     </div>
-                    <div class="form-row pb-2">
+                    <div class="form-group pb-2">
                         <label for="email" class="form-label h6">E-mail</label>
                         <input 
-                            type="email" class="form-control" id="email" placeholder="ex) obongoutdebondy@orinoco.com" required
-                            pattern=""
+                            type="email" class="form-control" id="email" required
+                            autocomplete="off" placeholder="ex) norbert@orinoco.com"   
                         >
+                        <!-- pattern="^([0-9a-zA-Z].*?@([0-9a-zA-Z].*\.\w{2,4}))$" -->
                     </div>
                     <div class="panier__button">
-                        <button type="submit" class="btn btn-primary">COMMANDER</button>
+                        <button type="submit" class="btn btn-primary" id="form__orderButton">COMMANDER</button>
                     </div>
                 </form>
             </section>

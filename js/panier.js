@@ -164,13 +164,15 @@ function deleteProduct() {
 
 /********************* FORMULAIRE *********************/
 
-/* Afficher une formulaire de commande si le panier n'est pas vide */
-displayOrderForm();
+/* Afficher un formulaire de commande si le panier n'est pas vide */
 
+let formArea = document.getElementById('order-form');
+formArea.hidden = true;
+
+displayOrderForm();
 function displayOrderForm() {
     let numberOfItemInCart = localStorage.getItem('QuantityInCart');
     numberOfItemInCart = parseInt(numberOfItemInCart);
-    let formArea = document.getElementById('order-form');
     if (numberOfItemInCart >= 1) {
         formArea.hidden = false;
     }
@@ -180,18 +182,123 @@ function displayOrderForm() {
 }
 
 
-// Validation de saisie 
-// --- input type in HTML, pattern regEx, required
+/*
+const products = [];
+    for (let i = 0; i < productInCart.length; i++) {
+        products.push([productInCart[i].id]);
+    }
+*/
+/*
+const products = [];
+    for (let i = 0; i < productInCart.length; i++) {
+        products.push([productInCart[i].id, productInCart[i].option, productInCart[i].quantity]);
+    }
+*/
 
-// Once "COMMANDER" button is clicked
-// --- the number of items in local storage should be reset to 0 (localStorage.clear)
-// --- the customer should be sent to confirmation.html page.
-// --- the confirmation page will have to display orderId received from server
+
+
+
+
+////////////////////////////////////////////////////// REVIEW ////////////////////////////////////////////////////// 
+
 
 
 /* Confirmer la commande */
+executeSubmitEvent();
+
 const orderButton = document.getElementById('form__orderButton');
-orderButton.addEventListener('submit', (event) => {
+function executeSubmitEvent() {
+    orderButton.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Recuperer les données 
+        const inputFirstName = document.getElementById('firstName').value;
+        const inputLastName = document.getElementById('lastName').value;
+        const inputAddress = document.getElementById('address').value;
+        const inputCity = document.getElementById('city').value;
+        const inputEmail = document.getElementById('email').value;
+
+        // Créer un objet "contact" 
+        const inputContact = {
+            firstName: inputFirstName,
+            lastName: inputLastName,
+            address: inputAddress,
+            city: inputCity,
+            email: inputEmail
+        }
+
+        // Créer un array "products" 
+        const inputProducts = [];
+        for (let i = 0; i < productInCart.length; i++) {
+            inputProducts.push(productInCart[i].id);
+        }
+
+        // Envoyer "contact" et "products" au backend 
+        sendOrderToServer(inputContact, inputProducts);
+    })
+}
+
+function sendOrderToServer(paramContact, paramProducts) {
+    fetch(`http://localhost:3000/api/teddies/order`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            contact: paramContact,
+            products: paramProducts
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        localStorage.setItem('orderId', data.orderId);
+    })
+    .catch(function(error) {
+        showErrorMessage() 
+    });
+    localStorage.removeItem('QuantityInCart');
+    localStorage.removeItem('Cart');
+    localStorage.removeItem('TotalPrice');
+    document.location.href = "./confirmation.html";
+}
+
+
+////////////////////////////////////////////////////// REVIEW ////////////////////////////////////////////////////// 
+
+
+
+// // Recuperer les données "contact"
+    // const inputFirstName = document.getElementById('firstName').value;
+    // const inputLastName = document.getElementById('lastName').value;
+    // const inputAddress = document.getElementById('address').value;
+    // const inputCity = document.getElementById('city').value;
+    // const inputEmail = document.getElementById('email').value;
+
+    // // Créer un tableau "products" 
+    // const products = [];
+    // for (let i = 0; i < productInCart.length; i++) {
+    //     products.push([productInCart[i].id]);
+    // }
+    
+    // // Créer un "order" en combinant "contact" et "products"
+    // const order = {
+    //     contact: {
+    //         firstName: inputFirstName,
+    //         lastName: inputLastName,
+    //         address: inputAddress,
+    //         city: inputCity,
+    //         email: inputEmail
+    //     },
+    //     products: products
+    // }
+
+
+
+/*
+const orderButton = document.getElementById('form__orderButton');
+orderButton.addEve
+
+ntListener('submit', (event) => {
     event.preventDefault();
 
     // Recuperer les données d'entrée
@@ -200,7 +307,7 @@ orderButton.addEventListener('submit', (event) => {
     let inputLastName = formulaire.lastName;
     let inputAddress =formulaire.address;
     let inputCity = formulaire.city;
-    let inputEmail = formulaire.emaile;
+    let inputEmail = formulaire.email;
 
     console.log(inputFirstName)
 
@@ -244,7 +351,7 @@ function sendOrderToServer(paramContact, paramProducts) {
     });
 }
 
-
+*/
 
 
 

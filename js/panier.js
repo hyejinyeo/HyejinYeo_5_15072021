@@ -48,6 +48,7 @@ function displayProductsInCart() {
     deleteProduct();
 }
 
+
 function displayTotalPrice() {
     let totalPriceInCart = localStorage.getItem('TotalPrice');
     totalPriceInCart = JSON.parse(totalPriceInCart);
@@ -134,7 +135,6 @@ function increaseQuantity() {
     }
 }
 
-
 /* Supprimer un produit */
 function deleteProduct() {
     let quantityDelete = document.querySelectorAll('#quantityDelete');
@@ -172,73 +172,23 @@ function deleteProduct() {
 /********************* FORMULAIRE *********************/
 
 /* Afficher une formulaire de commande si le panier n'est pas vide */
-let numberOfItemInCart = localStorage.getItem('QuantityInCart');
-numberOfItemInCart = parseInt(numberOfItemInCart);
-let formArea = document.getElementById('order-form');
-if (numberOfItemInCart >= 1) {
-    formArea.innerHTML += `
-        <h3 class="mb-4">FORMULAIRE DE COMMANDE</h3>
-        <form id="formulaire" method="POST">
-            <div class="form-group pb-2">
-                <label for="firstName" class="form-label h6">Prénom</label>
-                <input 
-                    type="text" class="form-control" id="firstName" name="firstName" required
-                    autocomplete="off" placeholder="ex) Norbert" 
-                    minlength="1" maxlength="30"
-                    pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*"
-                    title="Prénom peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et [ ] [.] ['] [-]."
-                />
-            </div>
-            <div class="form-group pb-2">
-                <label for="lastName" class="form-label h6">Nom de famille</label>
-                <input 
-                    type="text" class="form-control" id="lastName" name="lastName"required
-                    autocomplete="off" placeholder="ex) Ourson d'Orinoco" 
-                    minlength="1" maxlength="30"
-                    pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*"
-                    title="Nom de famille peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et [ ] [.] ['] [-]."
-                />
-            </div>
-            <div class="form-group pb-2">
-                <label for="address" class="form-label h6">Adresse</label>
-                <input 
-                    type="text" class="form-control" id="address" name="address" required
-                    autocomplete="off" placeholder="ex) 123 rue Orinoco"
-                    minlength="1" maxlength="100"
-                    pattern="[0-9a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ ,.'-/]*"
-                />
-            </div>
-            <div class="form-group pb-2">
-                <label for="city" class="form-label h6">Ville</label>
-                <input 
-                    type="text" class="form-control" id="city" name="city" required
-                    autocomplete="off" placeholder="ex) Orinoco" 
-                    minlength="1" maxlength="50"
-                    pattern="[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ'-]*"
-                    title="Nom de ville peut contenir les caractères alphabétiques qui sont utilisés dans la langue française et ['] [-]."
-                />
-            </div>
-            <div class="form-group pb-2">
-                <label for="email" class="form-label h6">E-mail</label>
-                <input 
-                    type="email" class="form-control" id="email" name="email" required
-                    autocomplete="off" placeholder="ex) norbert@orinoco.com"   
-                />
-                <!-- pattern="^([a-zA-Z0-9.-_]+[@]{1}([a-zA-Z0-9].*\.\w{2,4}))$" -->
-            </div>
-            <div class="panier__button">
-                <button type="submit" class="btn btn-primary" id="form__orderButton">COMMANDER</button>
-            </div>
-        </form>
-    `
+displayOrderForm();
+
+function displayOrderForm() {
+    let numberOfItemInCart = localStorage.getItem('QuantityInCart');
+    numberOfItemInCart = parseInt(numberOfItemInCart);
+    let formArea = document.getElementById('order-form');
+    if (numberOfItemInCart >= 1) {
+        formArea.hidden = false;
+    }
+    else {
+        formArea.hidden = true;
+    }
 }
-// consider using HTMLElement.hidden = true | false; 
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden
 
 
 // Validation de saisie 
 // --- input type in HTML, pattern regEx, required
-
 
 // Once "COMMANDER" button is clicked
 // --- the number of items in local storage should be reset to 0 (localStorage.clear)

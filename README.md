@@ -1,6 +1,8 @@
 # OpenClassrooms Projet 5
 OpenClassrooms_Développeur Web_Projet 5: Orinoco
 
+
+
 ## Orinoco
 Orinoco est une entreprise de commerce en ligne. 
 
@@ -17,3 +19,14 @@ L'application web sera composée de 4 pages:
 
 ## Technologies utilisées
 HTML, CSS, JavaScript
+
+
+## BACKEND SERVEUR
+Repository GitHub à cloner: https://github.com/OpenClassrooms-Student-Center/JWDP5.git
+
+### Prerequisites
+Vous aurez besoin d'avoir Node et npm installés localement sur votre machine.
+
+### Installation
+Clonez ce dépôt. À partir du dossier du projet, exécutez "npm install". Vous pouvez ensuite exécuter le serveur avec "node server". Le serveur doit s'exécuter sur localhost avec le port par défaut 3000. Si le serveur s'exécute sur un autre port pour une raison quelconque, cela est imprimé sur la console lorsque le serveur démarre, par ex. "Listening on port 3001".
+

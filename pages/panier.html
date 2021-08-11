@@ -77,6 +77,24 @@
                         </tr>
                     </thead>
                     <tbody id="cart-tableBody">
+                        <template id="templateCart">
+                            <tr class="align-middle">
+                                <td>
+                                    <img id="cart__image" class="img-fluide cart-img" src="URL">
+                                </td>
+                                <td>
+                                    <span id="cart__name" class="h6">Name</span><br>
+                                    <span id="cart__id" class="small" id="product-id">Référence</span></td>
+                                <td id="cart__price">Prix</td>
+                                <td id="cart__option">Option</td>
+                                <td>
+                                    <i class="far fa-minus-square" id="quantityMinus"></i>
+                                    <span id="cart__quantity">Quantité</span>
+                                    <i class="far fa-plus-square" id="quantityPlus"></i>&nbsp
+                                    <i class="far fa-trash-alt" id="quantityDelete"></i>
+                                </td>    
+                            </tr>
+                        </template>
                     </tbody>
                     <tfoot>
                         <tr>

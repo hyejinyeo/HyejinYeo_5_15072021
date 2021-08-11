@@ -23,24 +23,17 @@ displayTotalPrice();
 /* Afficher un résumé des produits dans le panier */
 function displayProductsInCart() {
     for (let i = 0; i < productInCart.length; i ++) {
-        cartTableBody.innerHTML += `
-            <tr class="align-middle">
-                <td>
-                    <img class="img-fluide cart-img" src="${productInCart[i].image}">
-                </td>
-                <td>
-                    <span class="h6">${productInCart[i].name}</span><br>
-                    <span class="small" id="product-id">${productInCart[i].id}</span></td>
-                <td>${productInCart[i].price.toLocaleString("fr-FR", {style:"currency", currency:"EUR"})}</td>
-                <td id="product-option">${productInCart[i].option}</td>
-                <td>
-                    <i class="far fa-minus-square" id="quantityMinus"></i>
-                    <span>${productInCart[i].quantity}</span>
-                    <i class="far fa-plus-square" id="quantityPlus"></i>&nbsp
-                    <i class="far fa-trash-alt" id="quantityDelete"></i>
-                </td>    
-            </tr>
-        `
+        const templateCart = document.getElementById('templateCart')
+        const cloneElement = document.importNode(templateCart.content, true)
+    
+        cloneElement.getElementById("cart__image").src = productInCart[i].image
+        cloneElement.getElementById("cart__name").textContent = productInCart[i].name
+        cloneElement.getElementById("cart__id").textContent = productInCart[i].id
+        cloneElement.getElementById("cart__price").textContent = (productInCart[i].price).toLocaleString("fr-FR", {style:"currency", currency:"EUR"})
+        cloneElement.getElementById("cart__option").textContent = productInCart[i].option
+        cloneElement.getElementById("cart__quantity").textContent = productInCart[i].quantity
+    
+        document.getElementById("cart-tableBody").appendChild(cloneElement)
     }
     // Contrôle des boutons dans la colonne "Quantité"
     reduceQuantity();
@@ -48,7 +41,7 @@ function displayProductsInCart() {
     deleteProduct();
 }
 
-
+/* Afficher le prix total */
 function displayTotalPrice() {
     let totalPriceInCart = localStorage.getItem('TotalPrice');
     totalPriceInCart = JSON.parse(totalPriceInCart);

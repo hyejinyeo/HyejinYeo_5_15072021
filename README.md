@@ -21,7 +21,7 @@ L'application web sera composée de 4 pages:
 HTML, CSS, JavaScript
 
 
-## BACKEND SERVEUR
+## Backend serveur
 Repository GitHub à cloner: https://github.com/OpenClassrooms-Student-Center/JWDP5.git
 
 ### Prerequisites

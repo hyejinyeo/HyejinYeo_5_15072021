@@ -1,8 +1,8 @@
 /********************* Afficher un orderId (référence de la commande) *********************/
+let receivedOrderId = localStorage.getItem('orderId');
 
+displayOrderId();
 function displayOrderId() {
-    let orderId = document.getElementById('orderid')
-    let receivedOrderId = localStorage.getItem('orderId');
-    orderId.innerText = receivedOrderId;
+    document.getElementById('orderid').innerText = receivedOrderId;
 }
 

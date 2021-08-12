@@ -182,34 +182,20 @@ function displayOrderForm() {
 }
 
 
-/*
-const products = [];
-    for (let i = 0; i < productInCart.length; i++) {
-        products.push([productInCart[i].id]);
-    }
-*/
-/*
-const products = [];
-    for (let i = 0; i < productInCart.length; i++) {
-        products.push([productInCart[i].id, productInCart[i].option, productInCart[i].quantity]);
-    }
-*/
-/*
-let inputProducts = [];
-    for (let i = 0; i < productInCart.length; i++) {
-        inputProducts.push(productInCart[i]);
-    }
-*/
-
-////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
+/* Validation des données d'entrée */
+// Directement en HTML
+// "required" sur tous les champs
+// input type = "text" => pattern regEx
+// input type = "email"
 
 
-const orderButton = document.getElementById('form__orderButton');
+/* Confirmer la commande */
+const orderButton = document.getElementById('formulaire');
 orderButton.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    //Créer un objet "contact" 
-    let inputContact = {
+    // Créer un objet "contact" 
+    let contactInput = {
         firstName: document.getElementById('firstName').value,
         lastName: document.getElementById('lastName').value,
         address: document.getElementById('address').value,
@@ -226,25 +212,22 @@ orderButton.addEventListener('submit', (event) => {
     // Envoyer "contact" et "products" au backend 
     fetch(`http://localhost:3000/api/teddies/order`, {
         method: 'POST',
-        mode: 'cors',
         headers: {'Content-Type': 'application/json'},
+        mode: 'cors',
         body: JSON.stringify({
-            contact: inputContact,
+            contact: contactInput,
             products: productId
         })
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
+        localStorage.clear();
         localStorage.setItem('orderId', data.orderId);
     })
     .catch(function(error) {
         showErrorMessage() 
     });
-    localStorage.removeItem('QuantityInCart');
-    localStorage.removeItem('Cart');
-    localStorage.removeItem('TotalPrice');
-    window.location.href = "./confirmation.html";   
+    window.location.href = "./confirmation.html"; 
 })      
 
 
@@ -364,10 +347,6 @@ function sendOrderToServer() {
 }
 
 */
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
 
 
@@ -411,6 +390,3 @@ function sendOrderToServer() {
 //         alert('input correct')
 //     };
 // } // closure of fuction validateInput
-
-
-

@@ -194,49 +194,90 @@ const products = [];
         products.push([productInCart[i].id, productInCart[i].option, productInCart[i].quantity]);
     }
 */
+/*
+let inputProducts = [];
+    for (let i = 0; i < productInCart.length; i++) {
+        inputProducts.push(productInCart[i]);
+    }
+*/
 
+////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
 
-
-
-
-////////////////////////////////////////////////////// REVIEW ////////////////////////////////////////////////////// 
-
-
-
-/* Confirmer la commande */
-executeSubmitEvent();
 
 const orderButton = document.getElementById('form__orderButton');
+orderButton.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    //Créer un objet "contact" 
+    let inputContact = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        email: document.getElementById('email').value
+    }
+
+    // Créer un array "products" 
+    let productId = [];
+    for (let i = 0; i < productInCart.length; i++) {
+        productId.push(productInCart[i].id);
+    }
+        
+    // Envoyer "contact" et "products" au backend 
+    fetch(`http://localhost:3000/api/teddies/order`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            contact: inputContact,
+            products: productId
+        })
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        localStorage.setItem('orderId', data.orderId);
+    })
+    .catch(function(error) {
+        showErrorMessage() 
+    });
+    localStorage.removeItem('QuantityInCart');
+    localStorage.removeItem('Cart');
+    localStorage.removeItem('TotalPrice');
+    window.location.href = "./confirmation.html";   
+})      
+
+
+////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
+/*
+
+executeSubmitEvent();
+
 function executeSubmitEvent() {
+    const orderButton = document.getElementById('form__orderButton');
     orderButton.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        // Recuperer les données 
-        const inputFirstName = document.getElementById('firstName').value;
-        const inputLastName = document.getElementById('lastName').value;
-        const inputAddress = document.getElementById('address').value;
-        const inputCity = document.getElementById('city').value;
-        const inputEmail = document.getElementById('email').value;
-
-        // Créer un objet "contact" 
-        const inputContact = {
-            firstName: inputFirstName,
-            lastName: inputLastName,
-            address: inputAddress,
-            city: inputCity,
-            email: inputEmail
+        //Créer un objet "contact" 
+        let inputContact = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            address: document.getElementById('address').value,
+            city: document.getElementById('city').value,
+            email: document.getElementById('email').value
         }
 
         // Créer un array "products" 
-        const inputProducts = [];
+        let inputProducts = [];
         for (let i = 0; i < productInCart.length; i++) {
-            inputProducts.push(productInCart[i].id);
+            inputProducts.push(productInCart[i]);
         }
-
-        // Envoyer "contact" et "products" au backend 
+        
+        // Envoyer "contact" et "products" au backend
         sendOrderToServer(inputContact, inputProducts);
-    })
-}
+    })      
+} 
+
 
 function sendOrderToServer(paramContact, paramProducts) {
     fetch(`http://localhost:3000/api/teddies/order`, {
@@ -262,83 +303,54 @@ function sendOrderToServer(paramContact, paramProducts) {
     document.location.href = "./confirmation.html";
 }
 
+*/
 
-////////////////////////////////////////////////////// REVIEW ////////////////////////////////////////////////////// 
-
-
-
-// // Recuperer les données "contact"
-    // const inputFirstName = document.getElementById('firstName').value;
-    // const inputLastName = document.getElementById('lastName').value;
-    // const inputAddress = document.getElementById('address').value;
-    // const inputCity = document.getElementById('city').value;
-    // const inputEmail = document.getElementById('email').value;
-
-    // // Créer un tableau "products" 
-    // const products = [];
-    // for (let i = 0; i < productInCart.length; i++) {
-    //     products.push([productInCart[i].id]);
-    // }
-    
-    // // Créer un "order" en combinant "contact" et "products"
-    // const order = {
-    //     contact: {
-    //         firstName: inputFirstName,
-    //         lastName: inputLastName,
-    //         address: inputAddress,
-    //         city: inputCity,
-    //         email: inputEmail
-    //     },
-    //     products: products
-    // }
-
-
-
+////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
 /*
-const orderButton = document.getElementById('form__orderButton');
-orderButton.addEve
 
-ntListener('submit', (event) => {
+// EventListener 'submit' sur le boutton "COMMANDER"
+const orderButton = document.getElementById('form__orderButton');
+orderButton.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Recuperer les données d'entrée
-    let formulaire = document.getElementById('formulaire');
-    let inputFirstName = formulaire.firstName;
-    let inputLastName = formulaire.lastName;
-    let inputAddress =formulaire.address;
-    let inputCity = formulaire.city;
-    let inputEmail = formulaire.email;
-
-    console.log(inputFirstName)
-
-    // Créer un object "contact" 
-    const contact = {
-        firstName: inputFirstName,
-        lastName: inputLastName,
-        address: inputAddress,
-        city: inputCity,
-        email: inputEmail
-    }
+    // Recuperer les données "contact"
+    const inputFirstName = document.getElementById('firstName').value;
+    const inputLastName = document.getElementById('lastName').value;
+    const inputAddress = document.getElementById('address').value;
+    const inputCity = document.getElementById('city').value;
+    const inputEmail = document.getElementById('email').value;
 
     // Créer un tableau "products" 
     const products = [];
-    products.push(productInCart);
+    for (let i = 0; i < productInCart.length; i++) {
+        products.push([productInCart[i].id]);
+    }
+    
+    // Créer un "order" en combinant "contact" et "products"
+    const order = {
+        contact: {
+            firstName: inputFirstName,
+            lastName: inputLastName,
+            address: inputAddress,
+            city: inputCity,
+            email: inputEmail
+        },
+        products: products
+    }
 
-    // Envoyer "contact" & "products" 
-    sendOrderToServer(contact, products);
+    // Envoyer "order" 
+    sendOrderToServer();
 
 }) // closure of eventlistener
 
 
-function sendOrderToServer(paramContact, paramProducts) {
+function sendOrderToServer() {
     fetch(`http://localhost:3000/api/teddies/order`, {
         method: 'POST',
         headers: {
             'Content-Type': 'applicatin/json'
         },
-        body: JSON.stringify({
-            contact: paramContact, 
-            products: paramProducts})
+        body: JSON.stringify(order)
     })
     .then((response) => response.json())
     .then((afterSendingOrder) => {
@@ -352,11 +364,14 @@ function sendOrderToServer(paramContact, paramProducts) {
 }
 
 */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////// REGEX
 
 /* Création d'expressions régulières */
 // let regExName = new RegExp(

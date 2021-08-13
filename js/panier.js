@@ -162,10 +162,9 @@ function deleteProduct() {
    
 
 
-/********************* FORMULAIRE *********************/
+/********************* AFFICHER UN FORMULAIRE ET ENVOYER LA COMMANDE AU BACKEND *********************/
 
 /* Afficher un formulaire de commande si le panier n'est pas vide */
-
 let formArea = document.getElementById('order-form');
 formArea.hidden = true;
 
@@ -181,20 +180,47 @@ function displayOrderForm() {
     }
 }
 
+/* Validation des saisies d'utilisateur: Built-in Form Validation HTML */
+// L'attribut "required" de la balise <input> sur tous les champs
+// L'attribut "pattern" avec RegExp pour <input type="text">
+// L'attribut <input type="email">
 
-/* Validation des données d'entrée */
-// Directement en HTML
-// "required" sur tous les champs
-// input type = "text" => pattern regEx
-// input type = "email"
-
-
-/* Confirmer la commande */
+/* Valider les saisies du formulaire sur l'événement 'submit' */
 const orderButton = document.getElementById('formulaire');
 orderButton.addEventListener('submit', (event) => {
     event.preventDefault();
+    validateFormInput();
+})      
 
-    // Créer un objet "contact" 
+
+/* Tester les saisies à l'aide de RegExp */
+
+// Création d'expressions régulières
+const nameRegExp = /^[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*$/
+const addressRegExp = /[0-9a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ ,.'-/]*$/
+const cityRegExp = /^[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ'-]*$/
+const emailRegExp = /([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/
+
+function validateFormInput() {
+    // Si une saisie incorrecte est trouvée, afficher un message d'alerte
+    if (nameRegExp.test(document.getElementById('firstName').value) !== true ||
+        nameRegExp.test(document.getElementById('lastName').value) !== true ||
+        addressRegExp.test(document.getElementById('address').value) !== true ||
+        cityRegExp.test(document.getElementById('city').value) !== true ||
+        emailRegExp.test(document.getElementById('email').value) !== true) {
+            alert(`Pardon ! Nous n'avons pas pu traiter votre commande en raison d'une saisie incorrecte du formulaire. Veuillez vérifier vos saisies et réessayer !`)
+    } 
+    // Si tout est valide, exécuter la fonction sendOrderToServer
+    else {
+        sendOrderToServer();
+    }
+}
+
+
+/* Envoyer la commande au serveur */
+function sendOrderToServer() {
+
+    //Créer un objet "contact" 
     let contactInput = {
         firstName: document.getElementById('firstName').value,
         lastName: document.getElementById('lastName').value,
@@ -209,7 +235,7 @@ orderButton.addEventListener('submit', (event) => {
         productId.push(productInCart[i].id);
     }
         
-    // Envoyer "contact" et "products" au backend 
+    // Envoyer "contact" et "products" au serveur 
     fetch(`http://localhost:3000/api/teddies/order`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -223,170 +249,9 @@ orderButton.addEventListener('submit', (event) => {
     .then((data) => {
         localStorage.clear();
         localStorage.setItem('orderId', data.orderId);
+        window.location.href = "./confirmation.html"; 
     })
-    .catch(function(error) {
-        showErrorMessage() 
-    });
-    window.location.href = "./confirmation.html"; 
-})      
-
-
-////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
-/*
-
-executeSubmitEvent();
-
-function executeSubmitEvent() {
-    const orderButton = document.getElementById('form__orderButton');
-    orderButton.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        //Créer un objet "contact" 
-        let inputContact = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            address: document.getElementById('address').value,
-            city: document.getElementById('city').value,
-            email: document.getElementById('email').value
-        }
-
-        // Créer un array "products" 
-        let inputProducts = [];
-        for (let i = 0; i < productInCart.length; i++) {
-            inputProducts.push(productInCart[i]);
-        }
-        
-        // Envoyer "contact" et "products" au backend
-        sendOrderToServer(inputContact, inputProducts);
-    })      
-} 
-
-
-function sendOrderToServer(paramContact, paramProducts) {
-    fetch(`http://localhost:3000/api/teddies/order`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            contact: paramContact,
-            products: paramProducts
-        }),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
-        localStorage.setItem('orderId', data.orderId);
-    })
-    .catch(function(error) {
-        showErrorMessage() 
-    });
-    localStorage.removeItem('QuantityInCart');
-    localStorage.removeItem('Cart');
-    localStorage.removeItem('TotalPrice');
-    document.location.href = "./confirmation.html";
-}
-
-*/
-
-////////////////////////////////////////////////////// TRIAL ////////////////////////////////////////////////////// 
-/*
-
-// EventListener 'submit' sur le boutton "COMMANDER"
-const orderButton = document.getElementById('form__orderButton');
-orderButton.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    // Recuperer les données "contact"
-    const inputFirstName = document.getElementById('firstName').value;
-    const inputLastName = document.getElementById('lastName').value;
-    const inputAddress = document.getElementById('address').value;
-    const inputCity = document.getElementById('city').value;
-    const inputEmail = document.getElementById('email').value;
-
-    // Créer un tableau "products" 
-    const products = [];
-    for (let i = 0; i < productInCart.length; i++) {
-        products.push([productInCart[i].id]);
-    }
-    
-    // Créer un "order" en combinant "contact" et "products"
-    const order = {
-        contact: {
-            firstName: inputFirstName,
-            lastName: inputLastName,
-            address: inputAddress,
-            city: inputCity,
-            email: inputEmail
-        },
-        products: products
-    }
-
-    // Envoyer "order" 
-    sendOrderToServer();
-
-}) // closure of eventlistener
-
-
-function sendOrderToServer() {
-    fetch(`http://localhost:3000/api/teddies/order`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'applicatin/json'
-        },
-        body: JSON.stringify(order)
-    })
-    .then((response) => response.json())
-    .then((afterSendingOrder) => {
-        localStorage.clear();
-        localStorage.setItem("orderId", afterSendingOrder.orderId);
-        document.location.href = "./confirmation.html";
-    })
-    .catch(function(error) {
-        showErrorMessage()
+    .catch((error) => {
+        alert(`Il y a eu une erreur : ` + error )
     });
 }
-
-*/
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////// REGEX
-
-/* Création d'expressions régulières */
-// let regExName = new RegExp(
-//     `[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ .'-]*$`
-// );
-// let regExAddress = new RegExp(
-//     `[0-9a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ ,.'-/]*$` 
-// );
-// let regExCity = new RegExp(
-//     `[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ]{1,}[a-zàâäéèêëîïôöùûüÿçæœA-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇÆ'-]*$`
-// );
-// let regExEmail = new RegExp(
-//     `^([a-zA-Z0-9.-_]+[@]{1}([a-zA-Z0-9].*\.\w{2,4}))$`
-// );
-
-/* Validation des données d'entrée */
-// function validateInput() {
-//     // Recuperer les données d'entrée
-//     let formulaire = document.getElementById('formulaire');
-//     let inputFirstName = formulaire.firstName;
-//     let inputLastName = formulaire.lastName;
-//     let inputAddress =formulaire.address;
-//     let inputCity = formulaire.city;
-//     let inputEmail = formulaire.emaile;
-    
-//     // Tester les données d'entrée
-//     let testFirstName = regExName.test(inputFirstName);
-//     let testLastName = regExName.test(inputLastName);
-//     let testAddress = regExAddress.test(inputAddress);
-//     let testCity = regExCity.test(inputCity);
-//     let testEmail = regExEmail.test(inputEmail);
-
-//     if (testFirstName !== true || testLastName  !== true || testAddress !== true || testCity !== true || testEmail !== true) {
-//         alert('your incorrect');
-//     }
-//     else {
-//         alert('input correct')
-//     };
-// } // closure of fuction validateInput

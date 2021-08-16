@@ -23,18 +23,18 @@ displayTotalPrice();
 /* Afficher un résumé des produits dans le panier */
 function displayProductsInCart() {
     for (let i = 0; i < productInCart.length; i ++) {
-        const templateCart = document.getElementById('templateCart')
-        const cloneElement = document.importNode(templateCart.content, true)
+        const templateCart = document.getElementById('templateCart');
+        const cloneElement = document.importNode(templateCart.content, true);
     
-        cloneElement.getElementById("cart__image").src = productInCart[i].image
-        cloneElement.getElementById("cart__name").textContent = productInCart[i].name
-        cloneElement.getElementById("cart__id").textContent = productInCart[i].id
-        cloneElement.getElementById("cart__price").textContent = (productInCart[i].price).toLocaleString("fr-FR", {style:"currency", currency:"EUR"})
-        cloneElement.getElementById("cart__option").textContent = productInCart[i].option
-        cloneElement.getElementById("cart__quantity").textContent = productInCart[i].quantity
+        cloneElement.getElementById("cart__image").src = productInCart[i].image;
+        cloneElement.getElementById("cart__name").textContent = productInCart[i].name;
+        cloneElement.getElementById("cart__id").textContent = productInCart[i].id;
+        cloneElement.getElementById("cart__price").textContent = (productInCart[i].price).toLocaleString("fr-FR", {style:"currency", currency:"EUR"});
+        cloneElement.getElementById("cart__option").textContent = productInCart[i].option;
+        cloneElement.getElementById("cart__quantity").textContent = productInCart[i].quantity;
     
-        document.getElementById("cart-tableBody").appendChild(cloneElement)
-    }
+        document.getElementById("cart-tableBody").appendChild(cloneElement);
+    };
     // Contrôle des boutons dans la colonne "Quantité"
     reduceQuantity();
     increaseQuantity();
@@ -45,7 +45,7 @@ function displayProductsInCart() {
 function displayTotalPrice() {
     let totalPriceInCart = localStorage.getItem('TotalPrice');
     totalPriceInCart = JSON.parse(totalPriceInCart);
-    cartTotalPrice.innerHTML = totalPriceInCart.toLocaleString("fr-FR", {style:"currency", currency:"EUR"})
+    cartTotalPrice.innerHTML = totalPriceInCart.toLocaleString("fr-FR", {style:"currency", currency:"EUR"});
 }
 
 

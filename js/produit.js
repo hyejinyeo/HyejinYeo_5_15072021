@@ -18,12 +18,12 @@ const productQuantity = document.getElementById('description__quantity');
     const productInfo = await getProductInfo(productId);
     changeBreadcrumb(productInfo);
     insertProductInfo(productInfo);
-})()
+})();
 
 /* Obtenir l'ID du produit de l'URL*/
 function getProductId() {
     return new URL(document.location).searchParams.get('id');
-}
+};
 
 /* Appeler les données par ID de l'API du serveur  */
 function getProductInfo(productId) {
@@ -32,12 +32,12 @@ function getProductInfo(productId) {
         .catch(function(error) {
             showErrorMessage()
         });
-}
+};
 
 /* Modifier le breadcrumb - Nom d'ourson */
 function changeBreadcrumb(productInfo) {
     document.getElementById('breadcrumb-name').textContent = `OURSON :  ` + productInfo.name;
-}
+};
 
 /* Insérer les données */
 function insertProductInfo(productInfo) {
@@ -51,7 +51,7 @@ function insertProductInfo(productInfo) {
         option.innerText = productInfo.colors[i];
         productOption.appendChild(option);
     };
-}
+};
 
 
 
@@ -90,10 +90,8 @@ function modifyCartNumbers() {
     quantityInput = parseInt(quantityInput); // String -> Number
     if (productNumbers) {
         localStorage.setItem('QuantityInCart', productNumbers + quantityInput);
-        document.querySelector('.nav-link span').textContent = productNumbers + quantityInput;
     } else {
-        localStorage.setItem('QuantityInCart', quantityInput);
-        document.querySelector('.nav-link span').textContent = quantityInput;
+        localStorage.setItem('QuantityInCart', quantityInput);   
     }
 }
 

@@ -247,7 +247,6 @@ function sendOrderToServer() {
     })
     .then((response) => response.json())
     .then((data) => {
-        localStorage.clear();
         localStorage.setItem('orderId', data.orderId);
         window.location.href = "./confirmation.html"; 
     })

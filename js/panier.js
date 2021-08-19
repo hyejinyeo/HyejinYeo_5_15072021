@@ -45,7 +45,7 @@ function displayProductsInCart() {
 function displayTotalPrice() {
     let totalPriceInCart = localStorage.getItem('TotalPrice');
     totalPriceInCart = JSON.parse(totalPriceInCart);
-    cartTotalPrice.innerHTML = totalPriceInCart.toLocaleString("fr-FR", {style:"currency", currency:"EUR"});
+    cartTotalPrice.textContent = totalPriceInCart.toLocaleString("fr-FR", {style:"currency", currency:"EUR"});
 }
 
 

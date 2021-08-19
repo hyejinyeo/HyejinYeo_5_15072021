@@ -114,10 +114,10 @@ function addToCart() {
         productInCart.push({
             image: productImage.src,
             id: inputIdenfication,
-            name: productName.innerHTML,
+            name: productName.textContent,
             option: inputColor,
             quantity: parseInt(inputQuantity),
-            price: parseFloat(productPrice.innerHTML)
+            price: parseFloat(productPrice.textContent)
         });
     }
     alert('Votre ourson a bien été ajouté au panier !');
@@ -130,7 +130,7 @@ function addUpTotalPrice() {
     let cartPrice = localStorage.getItem('TotalPrice');
     let inputQuantity = productQuantity.value;
     inputQuantity = parseInt(inputQuantity);
-    let inputPriceXQuantity = (parseFloat(productPrice.innerHTML) * inputQuantity);
+    let inputPriceXQuantity = (parseFloat(productPrice.textContent) * inputQuantity);
     if (cartPrice !== null) {
         cartPrice = parseInt(cartPrice);
         localStorage.setItem('TotalPrice', cartPrice + inputPriceXQuantity);

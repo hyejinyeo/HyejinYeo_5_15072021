@@ -17,4 +17,5 @@ function displayTotalPrice() {
 
 
 /********************* Vider local storage *********************/
-localStorage.clear();
+localStorage.removeItem('TotalPrice');
+localStorage.removeItem('orderId');

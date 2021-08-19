@@ -247,6 +247,8 @@ function sendOrderToServer() {
     })
     .then((response) => response.json())
     .then((data) => {
+        localStorage.removeItem('QuantityInCart');
+        localStorage.removeItem('Cart'); 
         localStorage.setItem('orderId', data.orderId);
         window.location.href = "./confirmation.html"; 
     })

@@ -38,8 +38,6 @@ function displayProductsInCart() {
     // Contrôle des boutons dans la colonne "Quantité"
     modifyQuantity('increase');
     modifyQuantity('decrease');
-    // reduceQuantity();
-    // increaseQuantity();
     deleteProduct();
 }
 
@@ -50,6 +48,7 @@ function displayTotalPrice() {
     cartTotalPrice.textContent = totalPriceInCart.toLocaleString("fr-FR", {style:"currency", currency:"EUR"});
 }
 
+// Boutons dans la colonne "Quantité"
 /* Modifier la quantité du produit */
 function modifyQuantity(type) {
     let quantity = document.querySelectorAll(type == 'increase' ? '#quantityPlus' : '#quantityMinus');
@@ -65,11 +64,11 @@ function modifyQuantity(type) {
                 (obj) => obj.id === idOfProductToReduce && obj.option === optionOfProductToReduce
             );
             if (product) {
-                // Cas 'INCREASE'
+                // Cas 1: 'INCREASE'
                 if (type == 'increase') {
                     product.quantity = product.quantity + 1;
                 }
-                // Cas 'DECREASE'
+                // Cas 2: 'DECREASE'
                 // Si (la quantité == 1 ) : Supprimer le produit
                 else if (productInCart[m].quantity == 1) {
                     productInCart = productInCart.filter((el) => el.id !== idOfProductToReduce || el.option !== optionOfProductToReduce);
@@ -96,86 +95,6 @@ function modifyQuantity(type) {
         })
     }
 }
-
-
-// Boutons dans la colonne "Quantité"
-/* Réduire la quantité */
-// function reduceQuantity() {
-//     let quantityMinus = document.querySelectorAll('#quantityMinus');
-//     for (let m = 0; m < quantityMinus.length; m++) {
-//         quantityMinus[m].addEventListener('click', (event) => {
-//             event.preventDefault();
-//             let idOfProductToReduce = productInCart[m].id;
-//             let optionOfProductToReduce = productInCart[m].option;
-//             const unitPrice = productInCart[m].price;
-            
-//             // Modifier 'Cart'
-//             // Si (la quantité == 1 ) : Supprimer le produit
-//             if (productInCart[m].quantity == 1) {
-//                 productInCart = productInCart.filter( (el) => el.id !== idOfProductToReduce || el.option !== optionOfProductToReduce );
-//                 localStorage.setItem('Cart', JSON.stringify(productInCart));
-//             } 
-//             // Else (la quantité >= 2) : Réduire 1 de quantité de produit : 'Cart'
-//             else {
-//                 let product = productInCart.find(
-//                     (obj) => obj.id === idOfProductToReduce && obj.option === optionOfProductToReduce
-//                 );
-//                 if (product) {
-//                     product.quantity = product.quantity - 1; 
-//                 } 
-//                 localStorage.setItem('Cart', JSON.stringify(productInCart));
-//             }
-            
-//             // Modifier 'QuantityInCart'
-//             let productNumbers = localStorage.getItem('QuantityInCart');
-//             productNumbers = parseInt(productNumbers); // String -> Number
-//             localStorage.setItem('QuantityInCart', productNumbers - 1);
-            
-//             // Modifier 'TotalPrice'
-//             let cartPrice = localStorage.getItem('TotalPrice');
-//             cartPrice = parseInt(cartPrice);
-//             localStorage.setItem('TotalPrice', cartPrice - unitPrice);
-
-//             // Rechargement de la page
-//             window.location.reload();
-//         })
-//     }
-// }
-
-/* Augmenter la quantité */
-// function increaseQuantity() {
-//     let quantityPlus = document.querySelectorAll('#quantityPlus');
-//     for (let p = 0; p < quantityPlus.length; p++) {
-//         quantityPlus[p].addEventListener('click', (event) => {
-//             event.preventDefault();
-//             let idOfProductToIncrease = productInCart[p].id;
-//             let optionOfProductToIncrease = productInCart[p].option;
-//             const unitPrice = productInCart[p].price;
-            
-//             // Modifier 'Cart'
-//             let product = productInCart.find(
-//                 (obj) => obj.id === idOfProductToIncrease && obj.option === optionOfProductToIncrease
-//             );
-//             if (product) {
-//                 product.quantity = product.quantity + 1; 
-//             } 
-//             localStorage.setItem('Cart', JSON.stringify(productInCart));
-            
-//             // Modifier 'QuantityInCart'
-//             let productNumbers = localStorage.getItem('QuantityInCart');
-//             productNumbers = parseInt(productNumbers); // String -> Number
-//             localStorage.setItem('QuantityInCart', productNumbers + 1);
-            
-//             // Modifier 'TotalPrice'
-//             let cartPrice = localStorage.getItem('TotalPrice');
-//             cartPrice = parseInt(cartPrice);
-//             localStorage.setItem('TotalPrice', cartPrice + unitPrice);
-            
-//             // Rechargement de la page
-//             window.location.reload();
-//         })
-//     }
-// }
 
 /* Supprimer un produit */
 function deleteProduct() {
@@ -208,7 +127,7 @@ function deleteProduct() {
         })
     }
 }
-   
+
 
 
 /********************* AFFICHER UN FORMULAIRE ET ENVOYER LA COMMANDE AU BACKEND *********************/
@@ -231,7 +150,8 @@ function displayOrderForm() {
 
 /* Validation des saisies d'utilisateur: Built-in Form Validation HTML */
 // L'attribut "required" de la balise <input> sur tous les champs
-// L'attribut "pattern" avec RegExp pour <input type="text">
+// L'attribut "min-length" et "max-length"
+// L'attribut <input type="text"> avec "pattern" RegEx
 // L'attribut <input type="email">
 
 /* Valider les saisies du formulaire sur l'événement 'submit' */

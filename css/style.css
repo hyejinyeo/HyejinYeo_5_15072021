@@ -5,6 +5,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #24111F;
 }
+main {
+    min-height: 100vh;
+}
 a {
     color: #24111F;
     text-decoration: none;
